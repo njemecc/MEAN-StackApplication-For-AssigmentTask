@@ -1,0 +1,49 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offert-lg-4 offset-md-3">
+                <div class="panel border bg-white"><button (click)="changeLanguage()" id="jezikdugme"  type="button" class="language-btn">EN/GR</button> <button (click)="handleLogout()" type="button" class="logout-dugme btn-danger">Logout</button>
+                    <div class="panel-heading">
+                        <h3 class="pt-3 font-weight-bold h3-login h3-naslov">Word Counter</h3>
+                        
+                    </div>
+                    
+                    <div class="panel-body p-3">
+                        <form [formGroup]="textForm">
+                            <div class="form-group pt-3">
+                                <div class="input-fiel" >
+                                 
+                                    <input (keypress)="oneSpace($event)" pattern="\s{2,}" class="input-text" formControlName="text" minlength="10" maxlength="390" type="text" placeholder="Text">
+                                </div>
+                            </div>
+                            <small *ngIf="textForm.controls['text'].dirty && textForm.hasError('minlength','text')" class="text-danger error-text error-small error-req" >Please enter a valid text with 10 to 390 chars</small>
+                           
+
+                        
+                          
+                            <button (click)="countWords()" type="button" class="btn btn-primary btn-block mt-4 w-100 login-dugme count-dugme" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Calculate</button>
+                            <button   (click)="deleteWords()"  type="button" class="btn btn-danger btn-block mt-4 w-100 cancel-dugme">Cancel</button>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title result-text-2" id="offcanvasBottomLabel">Result of your text:</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div style="display: flex; gap:250px" class="offcanvas-body small">
+            <h3 class="numberOfWords"></h3>
+            <h4 class="numberOfDigits"></h4>
+            <p class="p-palindromi"></p>
+          </div>
+          
+
+        </div></div>
+</div>

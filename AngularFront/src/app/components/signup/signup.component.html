@@ -1,0 +1,50 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offert-lg-4 offset-md-3">
+                <div class="panel border bg-white"> <button id="jezikdugme" (click)="changeLanguage()"  type="button" class="language-btn">EN/GR</button>
+                    <div class="panel-heading">
+                        <h3 class="pt-3 font-weight-bold naslov">Sign up</h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form [formGroup]="signupForm">
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-user p-2">
+                                        
+                                    </span>
+                                    <input class="input-username" required minlength="4" maxlength="20"  formControlName="user_name" type="text" placeholder="Username">
+                                </div>
+                            </div>
+                                        
+                                        
+                            <small class="error-username" *ngIf=" signupForm.controls['user_name'].dirty && signupForm.hasError('minlength','user_name')" class="text-danger">Please enter a valid first name with 4 to 20 letters.
+                            </small>
+
+                            <small class="error-req" *ngIf=" signupForm.controls['user_name'].dirty && signupForm.hasError('required','user_name')" class="text-danger">Please fill all required fields. </small>
+    
+                                    
+
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-lock p-2">
+                                        
+                                    </span>
+                                    <input class="input-password" required minlength="8" maxlength="25" formControlName="password" [type]="type" placeholder="Password">
+                                    <span (click)="hideShowPass()"  class="fa  fa-{{eyeIcon}}"></span>
+                                </div>
+                            </div>
+                            <small class="error-username" *ngIf=" signupForm.controls['password'].dirty && signupForm.hasError('minlength','password')" class="text-danger">Please enter a valid first name with 8 to 25 letters.
+                            </small>
+                            <small class="error-req" *ngIf=" signupForm.controls['password'].dirty && signupForm.hasError('required','password')" class="text-danger">Please fill all required fields.
+
+                            </small>
+                            <button [disabled]="!signupForm.valid" (click)="handleSubmit()" type="submit" class="btn btn-primary btn-block mt-4 w-100 btn-signUp" >Sign up</button>
+                            <div class="text-center pt-4 text-muted alredy">Alredy have an account? <a id="forget" routerLink="/login" >Login</a></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
